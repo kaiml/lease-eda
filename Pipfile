@@ -11,6 +11,7 @@ isort = "*"
 mypy = "*"
 pep8 = "*"
 tox = "*"
+dvc = {extras = ["gc"],version = "*"}
 
 [packages]
 
