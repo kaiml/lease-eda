@@ -12,11 +12,22 @@ invoke = "*"
 isort = "*"
 mypy = "*"
 pep8 = "*"
+pycodestyle = "*"
+pycodestyle-magic = "*"
 tox = "*"
 
 [packages]
+ipython = "*"
 jupyter = "*"
 jupyter-contrib-nbextensions = "*"
+lightgbm = "*"
+matplotlib = "*"
+mecab-python3 = "*"
+numpy = "*"
+pandas = "*"
+scikit-learn = "*"
+seaborn = "*"
+tqdm = "*"
 
 [pipenv]
 allow_prereleases = true
