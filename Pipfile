@@ -14,6 +14,7 @@ pep8 = "*"
 tox = "*"
 
 [packages]
+jupyter = "*"
 
 [pipenv]
 allow_prereleases = true
