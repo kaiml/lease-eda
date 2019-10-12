@@ -5,13 +5,13 @@ verify_ssl = true
 
 [dev-packages]
 black = "==19.3b0"
+dvc = {extras = ["gs"],version = "*"}
 flake8 = "*"
 invoke = "*"
 isort = "*"
 mypy = "*"
 pep8 = "*"
 tox = "*"
-dvc = {extras = ["gc"],version = "*"}
 
 [packages]
 
