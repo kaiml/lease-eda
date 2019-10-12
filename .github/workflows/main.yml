@@ -20,4 +20,4 @@ jobs:
         pipenv install --dev
     - name: Run test with Tox
       run: |
-        pipenv run tox
+        pipenv run tox -p 
