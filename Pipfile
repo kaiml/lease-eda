@@ -16,6 +16,7 @@ tox = "*"
 
 [packages]
 jupyter = "*"
+jupyter-contrib-nbextensions = "*"
 
 [pipenv]
 allow_prereleases = true
