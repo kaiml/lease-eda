@@ -1,0 +1,13 @@
+# md files
+README.md
+CHANGELOG.md
+
+# dot files
+.git
+.gitignore
+.github
+.vscode
+
+# docker files
+docker-compose.yml
+Dockerfile
