@@ -32,6 +32,7 @@ RUN rm -rf /usr/bin/python3 && ln /usr/bin/python3.7 /usr/bin/python3
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
+# Install Pip3 Pipenv
 RUN pip3 install pipenv
 
 # Create a working directory
