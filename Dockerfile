@@ -47,6 +47,12 @@ COPY Pipfile.lock Pipfile.lock
 # Install dependencies
 RUN set -ex && pipenv sync --dev
 
+# Install Jupyter Notebook Extensions
+RUN pipenv install jupyter-contrib-nbextensions \
+    && pipenv install jupyter-nbextensions-configurator \
+    && pipenv run jupyter contrib nbextension install --user \
+    && pipenv run jupyter nbextensions_configurator enable --user
+
 # Install Jupyter Black
 RUN pipenv run jupyter nbextension install https://github.com/drillan/jupyter-black/archive/master.zip --user \
     && pipenv run jupyter nbextension enable jupyter-black-master/jupyter-black
@@ -55,9 +61,15 @@ RUN pipenv run jupyter nbextension install https://github.com/drillan/jupyter-bl
 RUN pipenv run jupyter nbextension install https://github.com/benjaminabel/jupyter-isort/archive/master.zip --user \
     && pipenv run jupyter nbextension enable jupyter-isort-master/jupyter-isort
 
-# jupyter-vimの設定
-RUN pipenv run jupyter nbextension install https://github.com/lambdalisue/jupyter-vim-binding/archive/master.zip --user \
+# Install Jupyter Vim
+RUN mkdir -p $(pipenv run jupyter --data-dir)/nbextensions \
+    && cd $(pipenv run jupyter --data-dir)/nbextensions \
+    && git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding \
     && pipenv run jupyter nbextension enable vim_binding/vim_binding
+
+# Change theme
+RUN pipenv install jupyterthemes \
+    && jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8
 
 # set password
 RUN pipenv run jupyter notebook --generate-config
