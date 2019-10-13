@@ -4,11 +4,10 @@
 
 ### Setup
 
-`docker build -t lease-eda .`
-`docker run -it -p 8888:8888 lease-eda`
-`pipenv run jupyter notebook --ip 0.0.0.0 --no-browser --allow-root`
-
-Download the ipynb file when you are done (Since it saves within its own container)
+Make sure that the port 8888 of your local computer is open.
+```
+docker-compose up --build
+```
 
 ### Snippets
 
