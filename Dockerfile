@@ -4,7 +4,7 @@
 
 FROM nvidia/cuda:10.0-base-ubuntu18.04
 
-# Install some basic utilities
+# Install Basic Utilities
 RUN apt-get update \
     && apt-get install -y \
     curl \
@@ -25,10 +25,10 @@ RUN apt-get update \
     python3.7-dev \
     python3-pip
 
-# Add backwards compatibility
+# Add Backwards Compatibility
 RUN rm -rf /usr/bin/python3 && ln /usr/bin/python3.7 /usr/bin/python3
 
-# Set env variables
+# Set Env Variables
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
@@ -45,7 +45,7 @@ ADD notebook/ notebook/
 COPY Pipfile Pipfile
 COPY Pipfile.lock Pipfile.lock
 
-# Install dependencies
+# Install Dependencies
 RUN set -ex && pipenv sync --dev
 
 # Install Jupyter Notebook Extensions
@@ -69,16 +69,15 @@ RUN mkdir -p $(pipenv run jupyter --data-dir)/nbextensions \
     && cd $(pipenv run jupyter --data-dir)/nbextensions \
     && git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding 
 
-# Change theme
+# Change Theme
 RUN pipenv install jupyterthemes \
     && pipenv run jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8 \
     && sed -i '1s/^/.edit_mode .cell.selected .CodeMirror-focused:not(.cm-fat-cursor) { background-color: #1a0000 !important; }\n /' /root/.jupyter/custom/custom.css \
     && sed -i '1s/^/.edit_mode .cell.selected .CodeMirror-focused.cm-fat-cursor { background-color: #1a0000 !important; }\n /' /root/.jupyter/custom/custom.css
 
-
-# set password
+# Set Configuration Password
 RUN pipenv run jupyter notebook --generate-config
 RUN echo "c.NotebookApp.password='sha1:de50b38803a5:d854c89d71dca9a5810e16398ff0c00dbf950b20'">>/root/.jupyter/jupyter_notebook_config.py
 
+# Jupyter Notebook Command
 CMD pipenv run jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
-
