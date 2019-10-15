@@ -1,7 +1,9 @@
 version: '3.4'
 services:
   kaiml-eda:
-    build: .
+    build: 
+      context: .
+      dockerfile: ./docker/pip-based/Dockerfile
     image: "kaiml/lease-eda"
     ports:
     - "8888:8888"
