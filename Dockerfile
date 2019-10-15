@@ -68,13 +68,10 @@ RUN mkdir -p $(pipenv run jupyter --data-dir)/nbextensions \
 RUN pipenv run jupyter nbextension enable vim_binding/vim_binding
 
 # Change Theme
-# RUN pipenv run jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8 \
-#     && sed -i '1s/^/.edit_mode .cell.selected .CodeMirror-focused:not(.cm-fat-cursor) { background-color: #1a0000 !important; }\n /' /root/.jupyter/custom/custom.css \
-#     && sed -i '1s/^/.edit_mode .cell.selected .CodeMirror-focused.cm-fat-cursor { background-color: #1a0000 !important; }\n /' /root/.jupyter/custom/custom.css
+RUN pipenv run jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8 \
+    && sed -i '1s/^/.edit_mode .cell.selected .CodeMirror-focused:not(.cm-fat-cursor) { background-color: #1a0000 !important; }\n /' /root/.jupyter/custom/custom.css \
+    && sed -i '1s/^/.edit_mode .cell.selected .CodeMirror-focused.cm-fat-cursor { background-color: #1a0000 !important; }\n /' /root/.jupyter/custom/custom.css
 
 # Set Configuration Password
-# RUN pipenv run jupyter notebook --generate-config
-# RUN echo "c.NotebookApp.password='sha1:de50b38803a5:d854c89d71dca9a5810e16398ff0c00dbf950b20'">>/root/.jupyter/jupyter_notebook_config.py
-
-# Jupyter Notebook Command
-# CMD pipenv run jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
+RUN pipenv run jupyter notebook --generate-config
+RUN echo "c.NotebookApp.password='sha1:de50b38803a5:d854c89d71dca9a5810e16398ff0c00dbf950b20'">>/root/.jupyter/jupyter_notebook_config.py
