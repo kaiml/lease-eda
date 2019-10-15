@@ -4,7 +4,7 @@ services:
     build: 
       context: .
       dockerfile: ./docker/pip-based/Dockerfile
-    image: "kaiml/lease-eda"
+    image: kaiml/lease-eda:latest
     ports:
     - "8888:8888"
     volumes:
