@@ -2,7 +2,6 @@ version: '3.4'
 services:
   kaiml-eda:
     build: .
-    image: kaiml/lease-eda:latest
     ports:
     - "8888:8888"
     volumes:
