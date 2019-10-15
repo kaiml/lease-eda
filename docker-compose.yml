@@ -5,6 +5,7 @@ services:
     image: kaiml/lease-eda:latest
     ports:
     - "8888:8888"
+    volume: ./src:/app
     restart: always
     user: root
     command: pipenv run jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
