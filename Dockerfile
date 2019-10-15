@@ -60,10 +60,12 @@ RUN pipenv run jupyter nbextension install https://github.com/drillan/jupyter-bl
 RUN pipenv run jupyter nbextension install https://github.com/benjaminabel/jupyter-isort/archive/master.zip --user \
     && pipenv run jupyter nbextension enable jupyter-isort-master/jupyter-isort
 
-# Install Jupyter Vim
-RUN mkdir -p $(pipenv run jupyter --data-dir)/nbextensions/vim_binding \
-    && pipenv run jupyter nbextension install https://raw.githubusercontent.com/lambdalisue/jupyter-vim-binding/master/vim_binding.js --nbextensions=$(pipenv run jupyter --data-dir)/nbextensions/vim_binding \
-    && pipenv run jupyter nbextension enable vim_binding/vim_binding
+# # Install Jupyter Vim
+RUN mkdir -p $(pipenv run jupyter --data-dir)/nbextensions \
+    && cd $(pipenv run jupyter --data-dir)/nbextensions \ 
+    && git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding \
+    && chmod -R go-w vim_binding 
+RUN pipenv run jupyter nbextension enable vim_binding/vim_binding
 
 # Change Theme
 RUN pipenv run jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8 \
