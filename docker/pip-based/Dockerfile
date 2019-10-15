@@ -1,25 +1,21 @@
-# url: https://github.com/Kaggle/docker-python
+# URL: https://github.com/Kaggle/docker-python
 FROM gcr.io/kaggle-images/python:v56
 
 WORKDIR /app
 
 COPY ./requirements.txt .
 
-# ライブラリの追加インストール
+# Install Required Packages
 RUN pip install -U pip \
     && pip install fastprogress japanize-matplotlib \
     && pip install -r ./requirements.txt 
 
-# jupyter-notebook-extensions のインストール
+# Install Jupyter Nbxtensions
 RUN pip install jupyter_contrib_nbextensions \
     && jupyter contrib nbextension install --user \
     && jupyter nbextension enable codefolding/main
 
-# jupyterlabをインストール
-RUN pip install --upgrade pip && pip install jupyterlab \
-    && jupyter serverextension enable --py jupyterlab
-
-# jupyter-vimの設定
+# Install Jupyter-vim
 RUN mkdir -p $(jupyter --data-dir)/nbextensions \
     && cd $(jupyter --data-dir)/nbextensions \
     && git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding \
@@ -33,7 +29,7 @@ RUN jupyter nbextension install https://github.com/drillan/jupyter-black/archive
 RUN jupyter nbextension install https://github.com/benjaminabel/jupyter-isort/archive/master.zip --user \
     && jupyter nbextension enable jupyter-isort-master/jupyter-isort
 
-# Mecabのインストール
+# Install MeCab
 RUN apt-get update \
     && apt-get install -y mecab \
     && apt-get install -y libmecab-dev \
@@ -45,11 +41,9 @@ RUN apt-get update \
     && apt-get install -y file \
     && apt-get install -y sudo \
     && apt-get install -y wget
-
 RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git \
     && cd mecab-ipadic-neologd \
     && bin/install-mecab-ipadic-neologd -n -y
-
 RUN apt-get install -y software-properties-common vim
 
 # Change Theme
