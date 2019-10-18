@@ -11,16 +11,14 @@ jobs:
         APPROVALS: "1"
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ADD_LABEL: "ready-to-merge"
-  automerge:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Auto-Merge
-        uses: "pascalgn/automerge-action@master"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          LABELS: "!wip,!work in progress"
-          AUTOMERGE: "ready-to-merge"
-          AUTOREBASE: "ready-to-rebase-and-merge"
-          MERGE_METHOD: "merge"
-          MERGE_FORKS: "false"
-          COMMIT_MESSAGE_TEMPLATE: "automatic"
+    - name: Auto-Merge
+      if: success()
+      uses: "pascalgn/automerge-action@master"
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        LABELS: "!wip,!work in progress"
+        AUTOMERGE: "ready-to-merge"
+        AUTOREBASE: "ready-to-rebase-and-merge"
+        MERGE_METHOD: "merge"
+        MERGE_FORKS: "false"
+        COMMIT_MESSAGE_TEMPLATE: "automatic"
