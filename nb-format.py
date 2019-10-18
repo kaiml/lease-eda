@@ -15,7 +15,7 @@ def main(source):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Trim Final Lines of Particular Directory"
+        description="Trim Final Lines of a Particular Directory"
     )
     parser.add_argument("source")
     args = parser.parse_args()
