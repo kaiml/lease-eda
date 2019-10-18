@@ -27,4 +27,4 @@ jobs:
           AUTOREBASE: "ready-to-rebase-and-merge"
           MERGE_METHOD: "merge"
           MERGE_FORKS: "false"
-          COMMIT_MESSAGE_TEMPLATE: "pull-request-title-and-description"
+          COMMIT_MESSAGE_TEMPLATE: "automatic"
