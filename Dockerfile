@@ -65,6 +65,33 @@ RUN mkdir -p $(pipenv run jupyter --data-dir)/nbextensions \
     && chmod -R go-w vim_binding 
 RUN pipenv run jupyter nbextension enable vim_binding/vim_binding
 
+
+## Enable Nbextensions (Reference URL: https://qiita.com/simonritchie/items/88161c806197a0b84174)
+
+# Table Beautifier
+RUN pipenv run jupyter nbextension enable table_beautifier/main
+
+# Table of Contents
+RUN pipenv run jupyter nbextension enable toc2/main
+
+# Toggle all line numbers
+RUN pipenv run jupyter nbextension enable toggle_all_line_numbers/main
+
+# AutoSaveTime
+RUN pipenv run jupyter nbextension enable autosavetime/main
+
+# Collapsible Headings
+RUN pipenv run jupyter nbextension enable collapsible_headings/main
+
+# Execute Time
+RUN pipenv run jupyter nbextension enable execute_time/ExecuteTime
+
+# Codefolding
+RUN pipenv run jupyter nbextension enable codefolding/main
+
+# Notify
+RUN pipenv run jupyter nbextension enable notify/notify
+
 # Change Theme
 RUN pipenv run jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8 \
     && sed -i '1s/^/.edit_mode .cell.selected .CodeMirror-focused:not(.cm-fat-cursor) { background-color: #1a0000 !important; }\n /' /root/.jupyter/custom/custom.css \
@@ -72,4 +99,3 @@ RUN pipenv run jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf pt
 
 # Set Configuration Password
 RUN pipenv run jupyter notebook --generate-config
-RUN echo "c.NotebookApp.password='sha1:de50b38803a5:d854c89d71dca9a5810e16398ff0c00dbf950b20'">>/root/.jupyter/jupyter_notebook_config.py
