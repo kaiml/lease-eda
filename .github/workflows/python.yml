@@ -1,6 +1,9 @@
 name: Python Check Format, Sorting, and Type-Check
 
-on: [push]
+on:
+  push:
+    paths:
+    - '**.py'
 
 jobs:
   build:
