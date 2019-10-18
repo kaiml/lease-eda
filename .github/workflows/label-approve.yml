@@ -1,4 +1,4 @@
-name: Label Approved Pull Requests
+name: Merge Approved Pull Requests
 on: pull_request_review
 jobs:
   labelWhenApproved:
