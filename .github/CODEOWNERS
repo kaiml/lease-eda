@@ -5,9 +5,7 @@
 # the repo. Unless a later match takes precedence,
 # @global-owner1 and @global-owner2 will be requested for
 # review when someone opens a pull request.
-* @kaiml/kaiml-pull-assigner
-* @shunkakinoki
-* @kiccho1101
+* @kaiml/kaiml-pull-assigner @shunkakinoki @kiccho1101
 
 # Order is important; the last matching pattern takes the most
 # precedence. When someone opens a pull request that only
