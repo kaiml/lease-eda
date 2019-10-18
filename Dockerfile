@@ -39,8 +39,6 @@ RUN pip3 install pipenv
 RUN mkdir /app
 WORKDIR /app
 
-ADD notebook/ notebook/
-
 # Adding Pipfiles
 COPY Pipfile Pipfile
 COPY Pipfile.lock Pipfile.lock
