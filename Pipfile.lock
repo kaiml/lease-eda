@@ -798,11 +798,11 @@
                 "gs"
             ],
             "hashes": [
-                "sha256:4fcd92d23a4200a82db2e0c8855790317ebce0c1c20b2f264d7407af76f59602",
-                "sha256:e72a718358519d52aa9c358131e720ee2057000e56fed126345081cb354d4a28"
+                "sha256:376fff31da0954cd8be766db434f58f1a0a8571c19f8a9416baa8bf2e1ea9a3d",
+                "sha256:7dacfb53e87fa4d2686a7560d0dc6ac6677588dc18690a89f071df7170b096cf"
             ],
             "index": "pypi",
-            "version": "==0.62.1"
+            "version": "==0.63.3"
         },
         "entrypoints": {
             "hashes": [
@@ -1009,10 +1009,9 @@
         },
         "networkx": {
             "hashes": [
-                "sha256:cdfbf698749a5014bf2ed9db4a07a5295df1d3a53bf80bf3cbd61edf9df05fa1",
-                "sha256:f8f4ff0b6f96e4f9b16af6b84622597b5334bf9cae8cf9b2e42e7985d5c95c64"
+                "sha256:8311ddef63cf5c5c5e7c1d0212dd141d9a1fe3f474915281b73597ed5f1d4e3d"
             ],
-            "version": "==2.4"
+            "version": "==2.3"
         },
         "packaging": {
             "hashes": [
