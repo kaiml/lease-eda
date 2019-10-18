@@ -4,13 +4,6 @@ on:
     types:
       - labeled
       - unlabeled
-      - synchronize
-      - opened
-      - edited
-      - ready_for_review
-      - reopened
-      - unlocked
-  status: {}
 jobs:
   automerge:
     runs-on: ubuntu-latest
