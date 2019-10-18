@@ -94,9 +94,6 @@ RUN pipenv run jupyter nbextension enable codefolding/main
 # Notify
 RUN pipenv run jupyter nbextension enable notify/notify
 
-# Hinterland
-RUN pipenv run jupyter nbextension enable hinterland/hinterland
-
 # Change Theme
 RUN pipenv run jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8 \
     && sed -i '1s/^/.edit_mode .cell.selected .CodeMirror-focused:not(.cm-fat-cursor) { background-color: #1a0000 !important; }\n /' /root/.jupyter/custom/custom.css \
