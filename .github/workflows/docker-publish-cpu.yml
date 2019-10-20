@@ -1,6 +1,8 @@
-name: Build Docker Image
+name: Publish CPU Image to DockerHub
 on:
   push:
+    branches:
+      - master
     paths:
       - "Dockerfile"
       - "Pipfile.lock"
@@ -9,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Build Docker Image with DockerHub
+      - name: Publish CPU Image to DockerHub
         run: |
           cd $GITHUB_WORKSPACE
           echo ${PASSWORD} | docker login -u $USERNAME --password-stdin
@@ -17,6 +19,8 @@ jobs:
           IMAGE_NAME="$BASE_NAME:$GITHUB_SHA"
           docker pull $BASE_NAME || true
           docker build --cache-from $BASE_NAME -t $IMAGE_NAME -t $BASE_NAME -f Dockerfile .
+          docker push $IMAGE_NAME
+          docker push $BASE_NAME
         env:
           USERNAME: ${{ secrets.DOCKER_USERNAME }}
           PASSWORD: ${{ secrets.DOCKER_PASSWORD }
