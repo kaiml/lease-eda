@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - "**.py"
+      - "**.ipynb"
 jobs:
   build:
     runs-on: ubuntu-latest
