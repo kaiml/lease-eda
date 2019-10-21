@@ -15,11 +15,11 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           echo ${PASSWORD} | docker login -u $USERNAME --password-stdin
-          BASE_NAME="kaiml/lease"
+          BASE_NAME="kaiml/lease-eda"
           IMAGE_NAME="$BASE_NAME:latest"
           docker pull $IMAGE_NAME || true
-          docker build --cache-from $BASE_NAME -t $IMAGE_NAME -t $BASE_NAME -f Dockerfile .
+          docker build --cache-from $IMAGE_NAME -t $BASE_NAME -f Dockerfile .
           docker push $IMAGE_NAME
         env:
           USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          PASSWORD: ${{ secrets.DOCKER_PASSWORD }
+          PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
